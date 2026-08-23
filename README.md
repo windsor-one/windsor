@@ -8,9 +8,8 @@
   **Estrategia · Diseño · Tecnología · Innovación**
 
   <p>
-    Laboratorio digital independiente de El Salvador que evalúa ideas,
-    construye marcas y desarrolla productos digitales con método,
-    investigación y sensibilidad estética.
+    Windsor evalúa ideas, construye marcas y desarrolla productos
+    digitales con método, investigación y sensibilidad estética.
   </p>
 
   <p>
@@ -126,5 +125,5 @@ Si quieres conversar sobre una idea, una marca o un producto digital, visita [`c
   <br />
   <strong>Idea → Estrategia → Proyecto</strong>
   <br />
-  <sub>Windsor · El Salvador · Latinoamérica</sub>
+  <sub>Windsor · Latinoamérica</sub>
 </div>
