@@ -2223,13 +2223,21 @@ section { scroll-margin-top:82px; }
 /* IMAGEN INTEGRADA — WINDSOR CAREERS */
 .careers-photo-section {
     background: var(--cream);
-    padding: clamp(2rem, 4vw, 4rem) 6vw;
+    padding: clamp(3.5rem, 6vw, 5.5rem) 6vw;
+}
+.careers-photo-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1.25fr) minmax(260px, .75fr);
+    align-items: center;
+    gap: clamp(2.5rem, 6vw, 5rem);
+    max-width: var(--max-width);
+    margin: 0 auto;
 }
 .careers-photo-frame {
     position: relative;
     width: 100%;
-    max-width: 960px;
-    margin: 0 auto;
+    max-width: none;
+    margin: 0;
     overflow: hidden;
     background: var(--black);
     border: 1px solid rgba(10,10,12,.1);
@@ -2267,8 +2275,60 @@ section { scroll-margin-top:82px; }
     letter-spacing: .16em;
 }
 .careers-photo-caption span:last-child { color: var(--green); text-align: right; }
+.careers-photo-copy { max-width: 400px; }
+.careers-photo-kicker {
+    display: block;
+    margin-bottom: 1.25rem;
+    color: var(--blue);
+    font-family: var(--sans);
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: .16em;
+}
+.careers-photo-copy h2 {
+    max-width: 360px;
+    font-size: clamp(2.5rem, 5vw, 5rem);
+    line-height: .88;
+    letter-spacing: -.07em;
+}
+.careers-photo-copy h2 em {
+    display: block;
+    color: var(--blue);
+    font-family: var(--serif);
+    font-weight: 900;
+    text-decoration: underline;
+    text-decoration-thickness: .07em;
+    text-underline-offset: .1em;
+}
+.careers-photo-copy p {
+    max-width: 330px;
+    margin-top: 1.5rem;
+    color: #555550;
+    font-size: 15px;
+    line-height: 1.7;
+}
+.careers-photo-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    margin-top: 1.75rem;
+    padding-bottom: 7px;
+    border-bottom: 2px solid currentColor;
+    color: var(--black);
+    font-family: var(--sans);
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    transition: gap .25s ease, color .25s ease;
+}
+.careers-photo-link:hover { gap: 18px; color: var(--blue); }
+@media (max-width: 800px) {
+    .careers-photo-layout { grid-template-columns: 1fr; gap: 2.5rem; }
+    .careers-photo-copy { max-width: 520px; }
+}
 @media (max-width: 520px) {
-    .careers-photo-section { padding: 2rem 6vw; }
+    .careers-photo-section { padding: 3.5rem 6vw; }
     .careers-photo-frame { border-radius: var(--radius-sm); }
     .careers-photo-caption { flex-direction: column; align-items: flex-start; gap: .5rem; font-size: 7px; }
     .careers-photo-caption span:last-child { text-align: left; }
