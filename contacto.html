@@ -9,7 +9,7 @@
 <link href="assets/favicon.png" rel="icon" type="image/png"/>
 <link href="https://fonts.googleapis.com" rel="preconnect"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&amp;family=Open+Sans:wght@400;500;600;700&amp;family=Noto+Sans+KR:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&amp;family=Open+Sans:wght@400;500;600;700&amp;family=amp;display=swap" rel="stylesheet"/>
 <link href="styles.css" rel="stylesheet"/>
 </head>
 <body>
@@ -58,9 +58,9 @@
 <li><a class="active" href="contacto.html">Contacto</a></li>
 </ul>
 </nav>
-<div class="language-pulse" aria-label="Idiomas de Windsor">
-<svg class="language-pulse-icon" aria-hidden="true" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"></circle><path d="M3 12h18M12 3c2.2 2.4 3.3 5.4 3.3 9s-1.1 6.6-3.3 9c-2.2-2.4-3.3-5.4-3.3-9S9.8 5.4 12 3Z"></path></svg>
-<span class="active">ES</span><span>EN</span><span lang="ko">한국어</span>
+<div aria-label="Idiomas de Windsor" class="language-pulse">
+<svg aria-hidden="true" class="language-pulse-icon" viewbox="0 0 24 24"><circle cx="12" cy="12" r="9"></circle><path d="M3 12h18M12 3c2.2 2.4 3.3 5.4 3.3 9s-1.1 6.6-3.3 9c-2.2-2.4-3.3-5.4-3.3-9S9.8 5.4 12 3Z"></path></svg>
+<span class="active">ES</span><span>EN</span>
 </div>
 <div class="header-actions">
 <a class="header-button active" href="contacto.html">
@@ -95,44 +95,43 @@
 <a class="active" href="contacto.html">Contacto</a>
 </div>
 </div>
-<div class="trilingual-band" aria-label="Windsor en español, inglés y coreano">
+<div aria-label="Windsor en español e inglés" class="trilingual-band">
 <div class="trilingual-band-inner">
 <span class="tri-label">WINDSOR / 03 LANGUAGES</span>
-<div class="tri-copy"><p class="tri-hybrid">Ideas que se vuelven proyectos. <span class="hybrid-inline" lang="en">— Ideas into meaningful projects.</span> <span class="hybrid-inline" lang="ko">— 아이디어를 프로젝트로.</span></p></div>
+<div class="tri-copy"><p class="tri-hybrid">Ideas que se vuelven proyectos. <span class="hybrid-inline" lang="en">— Ideas into meaningful projects.</span> </p></div>
 </div>
 </div>
-<section class="page-context" aria-label="Contexto trilingüe de Windsor">
-<div class="page-context-image"><img src="assets/fotoindex5.jpg" alt="Profesionales conversando en una oficina luminosa." loading="lazy"/></div>
+<section aria-label="Contexto trilingüe de Windsor" class="page-context">
+<div class="page-context-image"><img alt="Profesionales conversando en una oficina luminosa." loading="lazy" src="assets/fotoindex5.jpg"/></div>
 <div class="page-context-copy">
-<span class="page-context-kicker">WINDSOR / CONTEXT</span><p class="page-context-hybrid">Cuéntanos qué estás construyendo y encontraremos el siguiente paso. <span class="hybrid-inline" lang="en">— Tell us what you are building and we will find the next step.</span> <span class="hybrid-inline" lang="ko">— 만들고 있는 이야기를 들려주세요.</span></p></div>
+<span class="page-context-kicker">WINDSOR / CONTEXT</span><p class="page-context-hybrid">Cuéntanos qué estás construyendo y encontraremos el siguiente paso. <span class="hybrid-inline" lang="en">— Tell us what you are building and we will find the next step.</span> </p></div>
 </section>
 <main class="contact-page-wrapper">
-
 <div class="contact-grid">
 <div class="contact-form">
-<h2>Escribinos <em>un mensaje.</em> <span class="heading-hybrid" lang="en">/ CONTACT</span> <span class="heading-hybrid" lang="ko">/ 연락</span></h2>
-<p class="subtitle">Completá el formulario y te responderemos a la brevedad. <span class="hybrid-inline" lang="en">— Tell us what you are building.</span> <span class="hybrid-inline" lang="ko">— 만들고 있는 이야기를 들려주세요.</span></p>
+<h2>Escribinos <em>un mensaje.</em> <span class="heading-hybrid" lang="en">/ CONTACT</span></h2>
+<p class="subtitle">Completá el formulario y te responderemos a la brevedad. <span class="hybrid-inline" lang="en">— Tell us what you are building.</span> </p>
 <form action="https://script.google.com/macros/s/AKfycbyG9GMdyh1PTEvUxutQtD3GjNt2iGei3Iw26fB08ay3Pu89Eliv2pSKJS_ja8LF-glanw/exec" id="contactForm" method="POST">
 <div class="form-row">
 <div class="form-group">
-<label for="nombre">Tu nombre <span lang="en">/ Name</span> <span lang="ko">/ 이름</span></label>
+<label for="nombre">Tu nombre <span lang="en">/ Name</span> </label>
 <input id="nombre" name="nombre" placeholder="ej. María González" required="" type="text"/>
 </div>
 <div class="form-group">
-<label for="email">Tu correo <span lang="en">/ Email</span> <span lang="ko">/ 이메일</span></label>
+<label for="email">Tu correo <span lang="en">/ Email</span> </label>
 <input id="email" name="email" placeholder="ej. maria@ejemplo.com" required="" type="email"/>
 </div>
 </div>
 <div class="form-group">
-<label for="asunto">Asunto <span lang="en">/ Subject</span> <span lang="ko">/ 제목</span></label>
+<label for="asunto">Asunto <span lang="en">/ Subject</span> </label>
 <input id="asunto" name="asunto" placeholder="¿Sobre qué querés hablar?" required="" type="text"/>
 </div>
 <div class="form-group">
-<label for="mensaje">Mensaje <span lang="en">/ Message</span> <span lang="ko">/ 메시지</span></label>
+<label for="mensaje">Mensaje <span lang="en">/ Message</span> </label>
 <textarea id="mensaje" name="mensaje" placeholder="Contanos tu idea, proyecto o consulta..." required=""></textarea>
 </div>
 <button class="submit-btn" id="submitBtn" type="submit">
-<span class="btn-text">Enviar mensaje <span lang="en">/ Send</span> <span lang="ko">/ 보내기</span></span>
+<span class="btn-text">Enviar mensaje <span lang="en">/ Send</span> </span>
 <span class="spinner"></span>
 <span class="arrow-icon">
 <svg fill="none" height="16" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="16">
@@ -146,14 +145,14 @@
 <div class="error-message" id="errorMessage"><svg aria-hidden="true" class="svg-icon svg-close" viewbox="0 0 24 24"><circle cx="12" cy="12" r="9"></circle><path d="m9 9 6 6M15 9l-6 6"></path></svg> Hubo un error al enviar el mensaje. Intentá de nuevo más tarde.</div>
 </div>
 <div class="contact-info">
-<h3>¿Cómo contactarnos? <span class="heading-hybrid" lang="en">/ CONTACT</span> <span class="heading-hybrid" lang="ko">/ 연락</span></h3>
+<h3>¿Cómo contactarnos? <span class="heading-hybrid" lang="en">/ CONTACT</span></h3>
 <span class="info-icon">
 <svg viewbox="0 0 24 24">
 <path d="M22 2L11 13"></path>
 <path d="M22 2L15 22l-4-9-9-4z"></path>
 </svg>
 </span>
-<p class="info-text"><strong>Este formulario</strong> es el único canal de contacto.<br/>Completalo con tus datos y tu mensaje, y te responderemos lo antes posible. <span class="hybrid-inline" lang="en">— tell us what you are building</span> <span class="hybrid-inline" lang="ko">— 만들고 있는 이야기를 들려주세요.</span></p>
+<p class="info-text"><strong>Este formulario</strong> es el único canal de contacto.<br/>Completalo con tus datos y tu mensaje, y te responderemos lo antes posible. <span class="hybrid-inline" lang="en">— tell us what you are building</span> </p>
 </div>
 </div>
 </main><footer class="footer">
@@ -163,36 +162,36 @@
 </div>
 <div class="footer-groups">
 <div class="footer-group">
-<h4>Sobre <span class="heading-hybrid" lang="en">/ DIRECTION</span> <span class="heading-hybrid" lang="ko">/ 방향</span></h4>
+<h4>Sobre <span class="heading-hybrid" lang="en">/ DIRECTION</span></h4>
 <a href="metodologia.html">Metodología</a>
 <a href="inspiracion.html">Inspiración</a>
 </div>
 <div class="footer-group">
-<h4>Servicios <span class="heading-hybrid" lang="en">/ SERVICES</span> <span class="heading-hybrid" lang="ko">/ 서비스</span></h4>
+<h4>Servicios <span class="heading-hybrid" lang="en">/ SERVICES</span></h4>
 <a href="cide.html">CIDE</a>
 <a href="windsor-one.html">Windsor One</a>
 <a href="BeQueer.html">BeQueer</a>
 </div>
 <div class="footer-group">
-<h4>Recursos <span class="heading-hybrid" lang="en">/ RESOURCES</span> <span class="heading-hybrid" lang="ko">/ 자료</span></h4>
+<h4>Recursos <span class="heading-hybrid" lang="en">/ RESOURCES</span></h4>
 <a href="orientacion-vocacional.html">Orientación</a>
 <a href="recomendados.html">Recomendados</a>
 <a href="proyectos.html">Proyectos</a>
 </div>
 <div class="footer-group">
-<h4>Programas <span class="heading-hybrid" lang="en">/ SERVICES</span> <span class="heading-hybrid" lang="ko">/ 서비스</span></h4>
+<h4>Programas <span class="heading-hybrid" lang="en">/ SERVICES</span></h4>
 <a href="becas.html">BK2</a>
 <a href="careers.html">Careers</a>
 </div>
 <div class="footer-group">
-<h4>Contacto <span class="heading-hybrid" lang="en">/ CONTACT</span> <span class="heading-hybrid" lang="ko">/ 연락</span></h4>
-<a class="active" href="contacto.html">Contáctanos / Contact / 연락하기</a>
+<h4>Contacto <span class="heading-hybrid" lang="en">/ CONTACT</span></h4>
+<a class="active" href="contacto.html">Contáctanos / Contact</a>
 </div>
 </div>
 <div class="footer-tagline">
 <span>Precisión aplicada.</span>
 <span lang="en">Applied precision.</span>
-<span lang="ko">정밀하게 적용합니다.</span>
+
 </div>
 </footer>
 <script src="script.js"></script>

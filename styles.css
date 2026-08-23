@@ -2337,7 +2337,7 @@ section { scroll-margin-top:82px; }
 
 /* =========================================================
    SISTEMA TRILINGÜE INTEGRADO
-   Español como base; English y 한국어 como capas editoriales.
+   Español como base; English y ENGLISH como capas editoriales.
 ========================================================= */
 .language-pulse {
     display: inline-flex;
@@ -2548,7 +2548,7 @@ section { scroll-margin-top:82px; }
     text-transform: none;
     opacity: .65;
 }
-.form-group label span[lang="ko"] { font-size: 10px; }
+.form-group label span[lang="en"] { font-size: 10px; }
 .submit-btn .btn-text span { font-size: 8px; opacity: .75; font-weight: 600; letter-spacing: .06em; }
 
 @media (max-width: 520px) {
@@ -2578,8 +2578,8 @@ section { scroll-margin-top:82px; }
 }
 
 
-:where([lang="ko"]) {
-    font-family: "Noto Sans KR", "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+:where([lang="en"]) {
+    font-family: var(--sans);
     letter-spacing: 0;
 }
 
@@ -2766,7 +2766,7 @@ section { scroll-margin-top:82px; }
     line-height: 1.4;
     letter-spacing: -.01em;
 }
-.page-context-copy p[lang="ko"] { color: #555; font-weight: 500; }
+.page-context-copy p[lang="en"] { color: #555; font-weight: 500; }
 @media (max-width: 800px) {
     .page-context { grid-template-columns: 1fr; gap: 2rem; padding: 4rem 6vw; }
     .page-context-image { max-width: 360px; }
@@ -2779,7 +2779,7 @@ section { scroll-margin-top:82px; }
 }
 
 
-/* Frases híbridas: inglés y coreano dentro de la misma oración */
+/* Frases híbridas: español e inglés dentro de la misma oración */
 .hybrid-inline {
     display: inline;
     font-family: var(--sans);
@@ -2790,17 +2790,17 @@ section { scroll-margin-top:82px; }
     white-space: normal;
 }
 .hybrid-inline[lang="en"] { color: var(--blue); }
-.hybrid-inline[lang="ko"] {
+.hybrid-inline[lang="en"] {
     color: #666;
-    font-family: "Noto Sans KR", "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+    font-family: var(--sans);
     font-size: .46em;
     font-weight: 500;
 }
 .tri-hybrid .hybrid-inline { font-size: .72em; }
 .hero-language-hybrid .hybrid-inline { color: rgba(255,255,255,.64); }
-.hero-language-hybrid .hybrid-inline[lang="ko"] { color: rgba(255,255,255,.5); }
+.hero-language-hybrid .hybrid-inline[lang="en"] { color: rgba(255,255,255,.5); }
 .recomendados-hybrid .hybrid-inline { font-size: .58em; }
-.recomendados-hybrid .hybrid-inline[lang="ko"] { color: rgba(255,255,255,.55); }
+.recomendados-hybrid .hybrid-inline[lang="en"] { color: rgba(255,255,255,.55); }
 .page-context-hybrid .hybrid-inline,
 .international-context-hybrid .hybrid-inline { font-size: .62em; }
 .subtitle .hybrid-inline { font-size: .78em; }
@@ -2812,7 +2812,7 @@ section { scroll-margin-top:82px; }
 }
 
 
-/* Cápsulas híbridas en encabezados */
+/* Cápsulas Spanglish en encabezados */
 .heading-hybrid {
     display: inline;
     margin-left: .45em;
@@ -2825,7 +2825,7 @@ section { scroll-margin-top:82px; }
     vertical-align: middle;
     white-space: nowrap;
 }
-.heading-hybrid[lang="ko"] { color: #666; font-weight: 500; }
+.heading-hybrid[lang="en"] { color: #666; font-weight: 500; }
 h1 .heading-hybrid { font-size: .12em; }
 h2 .heading-hybrid { font-size: .18em; }
 h3 .heading-hybrid,
