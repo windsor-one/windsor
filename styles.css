@@ -2777,3 +2777,63 @@ section { scroll-margin-top:82px; }
     .page-context-copy p { font-size: 1.35rem; }
     .page-context-copy p + p { font-size: .78rem; }
 }
+
+
+/* Frases híbridas: inglés y coreano dentro de la misma oración */
+.hybrid-inline {
+    display: inline;
+    font-family: var(--sans);
+    font-size: .48em;
+    font-weight: 600;
+    line-height: 1.35;
+    letter-spacing: -.01em;
+    white-space: normal;
+}
+.hybrid-inline[lang="en"] { color: var(--blue); }
+.hybrid-inline[lang="ko"] {
+    color: #666;
+    font-family: "Noto Sans KR", "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+    font-size: .46em;
+    font-weight: 500;
+}
+.tri-hybrid .hybrid-inline { font-size: .72em; }
+.hero-language-hybrid .hybrid-inline { color: rgba(255,255,255,.64); }
+.hero-language-hybrid .hybrid-inline[lang="ko"] { color: rgba(255,255,255,.5); }
+.recomendados-hybrid .hybrid-inline { font-size: .58em; }
+.recomendados-hybrid .hybrid-inline[lang="ko"] { color: rgba(255,255,255,.55); }
+.page-context-hybrid .hybrid-inline,
+.international-context-hybrid .hybrid-inline { font-size: .62em; }
+.subtitle .hybrid-inline { font-size: .78em; }
+@media (max-width: 520px) {
+    .hybrid-inline { font-size: .46em; }
+    .tri-hybrid .hybrid-inline { font-size: .65em; }
+    .page-context-hybrid .hybrid-inline,
+    .international-context-hybrid .hybrid-inline { font-size: .58em; }
+}
+
+
+/* Cápsulas híbridas en encabezados */
+.heading-hybrid {
+    display: inline;
+    margin-left: .45em;
+    color: var(--blue);
+    font-family: var(--sans);
+    font-size: .16em;
+    font-weight: 700;
+    letter-spacing: .02em;
+    line-height: 1;
+    vertical-align: middle;
+    white-space: nowrap;
+}
+.heading-hybrid[lang="ko"] { color: #666; font-weight: 500; }
+h1 .heading-hybrid { font-size: .12em; }
+h2 .heading-hybrid { font-size: .18em; }
+h3 .heading-hybrid,
+h4 .heading-hybrid { font-size: .28em; }
+@media (max-width: 520px) {
+    .heading-hybrid { margin-left: .3em; font-size: .14em; }
+    h1 .heading-hybrid { font-size: .1em; }
+    h2 .heading-hybrid { font-size: .16em; }
+    h3 .heading-hybrid,
+    h4 .heading-hybrid { font-size: .23em; }
+}
