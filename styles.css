@@ -2711,3 +2711,69 @@ section { scroll-margin-top:82px; }
     .recomendados-hero-image.image-front { right: 4%; }
     .video-credits { justify-content: flex-start; gap: .35rem .75rem; }
 }
+
+
+/* Módulos contextuales trilingües en páginas internas */
+.page-context {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: clamp(3.5rem, 7vw, 6rem) 6vw;
+    display: grid;
+    grid-template-columns: minmax(180px, .7fr) minmax(0, 1.3fr);
+    align-items: center;
+    gap: clamp(2rem, 6vw, 6rem);
+    background: var(--cream);
+}
+.page-context-image {
+    overflow: hidden;
+    border-radius: var(--radius-sm);
+    background: var(--black);
+}
+.page-context-image img {
+    display: block;
+    width: 100%;
+    aspect-ratio: 4 / 5;
+    object-fit: cover;
+    filter: saturate(.84) contrast(1.03);
+    transition: transform .45s cubic-bezier(.2,.8,.2,1), filter .45s ease;
+}
+.page-context-image:hover img { transform: scale(1.035); filter: saturate(1) contrast(1.03); }
+.page-context-copy { max-width: 620px; }
+.page-context-kicker {
+    display: block;
+    margin-bottom: 1.35rem;
+    color: var(--blue);
+    font-family: var(--sans);
+    font-size: 8px;
+    font-weight: 800;
+    letter-spacing: .16em;
+}
+.page-context-copy p {
+    max-width: 580px;
+    margin: 0;
+    color: var(--black);
+    font-size: clamp(1.15rem, 2.3vw, 2.3rem);
+    font-weight: 800;
+    line-height: 1.02;
+    letter-spacing: -.055em;
+}
+.page-context-copy p + p {
+    margin-top: .7rem;
+    color: var(--blue);
+    font-family: var(--sans);
+    font-size: clamp(.8rem, 1.2vw, 1.1rem);
+    font-weight: 600;
+    line-height: 1.4;
+    letter-spacing: -.01em;
+}
+.page-context-copy p[lang="ko"] { color: #555; font-weight: 500; }
+@media (max-width: 800px) {
+    .page-context { grid-template-columns: 1fr; gap: 2rem; padding: 4rem 6vw; }
+    .page-context-image { max-width: 360px; }
+    .page-context-copy { max-width: 560px; }
+}
+@media (max-width: 520px) {
+    .page-context { padding: 3.25rem 6vw; }
+    .page-context-copy p { font-size: 1.35rem; }
+    .page-context-copy p + p { font-size: .78rem; }
+}
