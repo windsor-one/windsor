@@ -3,11 +3,18 @@
    INTERACTIONS
 ========================================================= */
 
-window.addEventListener("load", () => {
+function hidePreloader() {
     const preloader = document.querySelector(".preloader");
-    if (!preloader) return;
-    setTimeout(() => { preloader.classList.add("loaded"); }, 1300);
+    if (!preloader || preloader.classList.contains("loaded")) return;
+    preloader.classList.add("loaded");
+}
+
+window.addEventListener("load", () => {
+    setTimeout(hidePreloader, 450);
 });
+
+// Fallback: ningún recurso externo debe dejar la interfaz bloqueada.
+setTimeout(hidePreloader, 2000);
 
 /* HEADER — Ocultar al bajar, mostrar al subir */
 const header = document.querySelector(".header");
