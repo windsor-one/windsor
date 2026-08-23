@@ -9,7 +9,7 @@
 <link href="assets/favicon.png" rel="icon" type="image/png"/>
 <link href="https://fonts.googleapis.com" rel="preconnect"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&amp;family=Open+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&amp;family=Open+Sans:wght@400;500;600;700&amp;family=Noto+Sans+KR:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
 <link href="styles.css" rel="stylesheet"/>
 </head>
 <body>
@@ -58,6 +58,10 @@
 <li><a class="active" href="contacto.html">Contacto</a></li>
 </ul>
 </nav>
+<div class="language-pulse" aria-label="Idiomas de Windsor">
+<svg class="language-pulse-icon" aria-hidden="true" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"></circle><path d="M3 12h18M12 3c2.2 2.4 3.3 5.4 3.3 9s-1.1 6.6-3.3 9c-2.2-2.4-3.3-5.4-3.3-9S9.8 5.4 12 3Z"></path></svg>
+<span class="active">ES</span><span>EN</span><span lang="ko">한국어</span>
+</div>
 <div class="header-actions">
 <a class="header-button active" href="contacto.html">
                 Hablemos
@@ -91,32 +95,44 @@
 <a class="active" href="contacto.html">Contacto</a>
 </div>
 </div>
+<div class="trilingual-band" aria-label="Windsor en español, inglés y coreano">
+<div class="trilingual-band-inner">
+<span class="tri-label">WINDSOR / 03 LANGUAGES</span>
+<div class="tri-copy">
+<p>Ideas que se vuelven proyectos.</p>
+<p lang="en">Ideas into meaningful projects.</p>
+<p lang="ko">아이디어를 프로젝트로.</p>
+</div>
+</div>
+</div>
 <main class="contact-page-wrapper">
+
 <div class="contact-grid">
 <div class="contact-form">
 <h2>Escribinos <em>un mensaje.</em></h2>
 <p class="subtitle">Completá el formulario y te responderemos a la brevedad.</p>
+<p class="contact-language-note"><span lang="en">Tell us what you are building.</span><span lang="ko">만들고 있는 이야기를 들려주세요.</span></p>
 <form action="https://script.google.com/macros/s/AKfycbyG9GMdyh1PTEvUxutQtD3GjNt2iGei3Iw26fB08ay3Pu89Eliv2pSKJS_ja8LF-glanw/exec" id="contactForm" method="POST">
 <div class="form-row">
 <div class="form-group">
-<label for="nombre">Tu nombre</label>
+<label for="nombre">Tu nombre <span lang="en">/ Name</span> <span lang="ko">/ 이름</span></label>
 <input id="nombre" name="nombre" placeholder="ej. María González" required="" type="text"/>
 </div>
 <div class="form-group">
-<label for="email">Tu correo</label>
+<label for="email">Tu correo <span lang="en">/ Email</span> <span lang="ko">/ 이메일</span></label>
 <input id="email" name="email" placeholder="ej. maria@ejemplo.com" required="" type="email"/>
 </div>
 </div>
 <div class="form-group">
-<label for="asunto">Asunto</label>
+<label for="asunto">Asunto <span lang="en">/ Subject</span> <span lang="ko">/ 제목</span></label>
 <input id="asunto" name="asunto" placeholder="¿Sobre qué querés hablar?" required="" type="text"/>
 </div>
 <div class="form-group">
-<label for="mensaje">Mensaje</label>
+<label for="mensaje">Mensaje <span lang="en">/ Message</span> <span lang="ko">/ 메시지</span></label>
 <textarea id="mensaje" name="mensaje" placeholder="Contanos tu idea, proyecto o consulta..." required=""></textarea>
 </div>
 <button class="submit-btn" id="submitBtn" type="submit">
-<span class="btn-text">Enviar mensaje</span>
+<span class="btn-text">Enviar mensaje <span lang="en">/ Send</span> <span lang="ko">/ 보내기</span></span>
 <span class="spinner"></span>
 <span class="arrow-icon">
 <svg fill="none" height="16" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="16">
@@ -173,7 +189,11 @@
 <a class="active" href="contacto.html">Contáctanos</a>
 </div>
 </div>
-<div class="footer-tagline">Precisión aplicada.</div>
+<div class="footer-tagline">
+<span>Precisión aplicada.</span>
+<span lang="en">Applied precision.</span>
+<span lang="ko">정밀하게 적용합니다.</span>
+</div>
 </footer>
 <script src="script.js"></script>
 <script>
