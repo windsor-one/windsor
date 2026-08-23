@@ -2048,3 +2048,173 @@ section { scroll-margin-top:82px; }
 .card-tags .svg-icon { width: 13px; height: 13px; }
 .statement-track .svg-spark, .marquee-track .svg-spark { width: .76em; height: .76em; }
 .success-message .svg-icon, .error-message .svg-icon { margin-right: 5px; }
+
+
+/* =========================================================
+   RITMO VISUAL ARMONIZADO
+   Escala compartida para evitar bloques amontonados o demasiado aislados.
+========================================================= */
+:root {
+    --space-section: clamp(4.75rem, 8vw, 7rem);
+    --space-content: clamp(2.75rem, 5vw, 5rem);
+    --space-grid: clamp(1.25rem, 2.4vw, 2rem);
+    --space-card: clamp(1.25rem, 2vw, 1.75rem);
+}
+
+/* Ritmo base de las secciones y sus encabezados */
+.section { padding: var(--space-section) 6vw; }
+.section-meta { padding-bottom: 14px; }
+.intro-layout,
+.hook-grid,
+.faq-layout,
+.principles-grid { padding-top: var(--space-content); }
+.intro-layout,
+.services-heading,
+.method-heading,
+.careers-layout,
+.faq-layout { gap: clamp(2.5rem, 6vw, 6rem); }
+.services-heading,
+.method-heading { padding: var(--space-content) 0; }
+.careers-layout { padding: var(--space-content) 0 clamp(4rem, 7vw, 6rem); }
+
+/* Jerarquía tipográfica un poco más respirada */
+.hero h1,
+.intro-layout h2,
+.services-heading h2,
+.method-heading h2,
+.seed-main h2,
+.careers h2,
+.faq-layout h2,
+.contact-main h2,
+.metodologia-hero .break-title,
+.metodologia-hero .sub-method,
+.cide-hero h1,
+.ov-hero h1,
+.bk2-hero h1,
+.careers-hero h1 { line-height: .9; }
+
+.hero-small { margin-bottom: clamp(1.5rem, 2.5vw, 2rem); }
+.hero-bottom { margin-top: clamp(3rem, 5vw, 4.25rem); }
+.hero-content { padding-top: clamp(3.5rem, 5vw, 4.5rem); padding-bottom: clamp(4rem, 6vw, 5rem); }
+
+/* Portada: equilibrio entre bloques, tarjetas y elementos auxiliares */
+.seed-section { min-height: 620px; padding: clamp(5rem, 8vw, 7.5rem) 10vw; }
+.seed-circle { margin-bottom: clamp(2rem, 4vw, 3rem); }
+.seed-main p { margin-top: clamp(2rem, 3.5vw, 3rem); }
+.service-cards { gap: var(--space-grid); }
+.service-card { min-height: 520px; padding: var(--space-card); }
+.card-content p { margin-top: 18px; }
+.card-bottom { gap: 16px; }
+.principles-grid { gap: 1px; }
+.principles-grid > div { min-height: 240px; padding: var(--space-card); }
+.principles-grid span { margin-bottom: clamp(2rem, 4vw, 3rem); }
+.hook-content p { margin-top: 24px; }
+.hook-stats { gap: var(--space-grid); padding: var(--space-card); }
+.faq-layout { padding-bottom: 0; }
+.faq-list { gap: 10px; }
+.contact-main { padding: clamp(4rem, 7vw, 6rem) 0; }
+.contact-main p { margin-top: 32px; }
+
+/* Páginas internas: misma escala para tarjetas, grids y llamadas a la acción */
+.metodologia-hero,
+.cide-hero,
+.ov-hero,
+.bk2-hero,
+.careers-hero {
+    padding: clamp(8rem, 11vw, 9.5rem) 6vw clamp(4rem, 6vw, 5rem);
+}
+.metodologia-grid,
+.one-cards-grid,
+.bequeer-grid,
+.recursos-grid,
+.testimonios,
+.benefits-grid {
+    gap: var(--space-grid);
+    margin-top: clamp(2.25rem, 4vw, 3.5rem);
+}
+.metodologia-item,
+.one-card,
+.bequeer-card,
+.recurso-item,
+.benefit-item { padding: var(--space-card); }
+.metodologia-item .card-inner,
+.one-card .card-inner,
+.bequeer-card .card-inner,
+.recurso-item .card-inner { gap: var(--space-grid); }
+
+.programas-grid,
+.areas-grid,
+.proyectos-grid { margin-top: clamp(2.25rem, 4vw, 3.5rem); }
+.programa,
+.area-item { padding: var(--space-card); }
+.callout,
+.cta-box,
+.cta-rainbow {
+    padding: clamp(1.5rem, 3vw, 2.5rem);
+    margin-top: clamp(2.5rem, 5vw, 4rem);
+    gap: var(--space-grid);
+}
+.testimonio { padding: var(--space-card); }
+.testimonio .autor { margin-top: 12px; }
+.intro-recomendados { padding: var(--space-section) 6vw; }
+.intro-recomendados p { margin-top: 22px; }
+.disclaimer { padding: var(--space-card); margin-top: clamp(2.5rem, 4vw, 3.5rem); }
+.timeline { gap: 0; margin-top: clamp(2.25rem, 4vw, 3.5rem); }
+.timeline-step { padding: 18px 0; }
+.contact-page-wrapper { padding: clamp(7rem, 10vw, 8rem) 6vw clamp(4rem, 6vw, 5rem); }
+.contact-grid { gap: clamp(2rem, 5vw, 4rem); }
+.form-group { margin-bottom: 20px; }
+.proyectos-grid { gap: 1px; }
+.proyecto-card { min-height: 240px; padding: var(--space-card); }
+
+/* Ajustes responsive pour conserver le rythme quand les colonnes se replient. */
+@media (max-width: 800px) {
+    .section { padding: clamp(4.25rem, 10vw, 5.5rem) 6vw; }
+    .intro-layout,
+    .services-heading,
+    .method-heading,
+    .faq-layout,
+    .hook-grid { gap: clamp(2rem, 7vw, 3rem); }
+    .intro-layout,
+    .services-heading,
+    .method-heading,
+    .faq-layout,
+    .hook-grid { padding-top: clamp(2.75rem, 7vw, 4rem); }
+    .seed-section { min-height: auto; padding: clamp(5rem, 12vw, 7rem) 7vw clamp(4.5rem, 10vw, 6rem); }
+    .service-card { min-height: 440px; }
+    .careers-layout { padding: clamp(2.75rem, 7vw, 4rem) 0 clamp(3.5rem, 8vw, 5rem); }
+    .hook-stats { padding: var(--space-card); }
+    .metodologia-hero,
+    .cide-hero,
+    .ov-hero,
+    .bk2-hero,
+    .careers-hero { padding: clamp(7rem, 18vw, 8rem) 6vw 4rem; }
+    .contact-page-wrapper { padding: 7rem 6vw 4rem; }
+    .proyecto-card { min-height: 220px; }
+}
+
+@media (max-width: 520px) {
+    .section { padding: 4rem 6vw; }
+    .hero-content { padding-top: 3rem; padding-bottom: 4rem; }
+    .hero-bottom { margin-top: 2.75rem; gap: 1.75rem; }
+    .seed-section { padding: 4.75rem 7vw 4rem; }
+    .service-card { min-height: 400px; padding: 1.25rem; }
+    .principles-grid > div { min-height: 0; }
+    .principles-grid span { margin-bottom: 2rem; }
+    .contact-main { padding: 4rem 0; }
+    .metodologia-hero,
+    .cide-hero,
+    .ov-hero,
+    .bk2-hero,
+    .careers-hero { padding: 6.75rem 6vw 3.5rem; }
+    .metodologia-grid,
+    .one-cards-grid,
+    .bequeer-grid,
+    .recursos-grid,
+    .testimonios,
+    .benefits-grid { margin-top: 2.25rem; }
+    .callout,
+    .cta-box,
+    .cta-rainbow { margin-top: 2.75rem; }
+    .contact-page-wrapper { padding: 6.5rem 6vw 3.5rem; }
+}
