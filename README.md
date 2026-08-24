@@ -5,14 +5,11 @@
 
   ### Precisión aplicada para convertir ideas en proyectos.
 
-  **Español · English · ENGLISH**
-
   **Estrategia · Diseño · Tecnología · Innovación**
 
   <p>
     Windsor evalúa ideas, construye marcas y desarrolla productos
-    digitales con método, investigación y sensibilidad estética. La experiencia
-    integra español e inglés con una jerarquía de contenido 60/25/15.
+    digitales con método, investigación y sensibilidad estética.
   </p>
 
   <p>
