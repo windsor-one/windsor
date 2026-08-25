@@ -34,7 +34,6 @@ const herreraSection = $('#herrera-section');
 const kuderCard = $('#kuder-card');
 const herreraCard = $('#herrera-card');
 const backButton = $('#test-back');
-const nextButton = $('#test-next');
 const metaStatus = $('#test-meta-status');
 
 let candidate = null;
@@ -86,7 +85,6 @@ function renderKuder() {
   setHidden(kuderSection, false);
   setHidden(herreraSection, true);
   backButton.disabled = kuderPage === 0;
-  nextButton.textContent = kuderPage === KUDER_COUNT - 1 ? 'Continuar a Herrera ↗' : 'Siguiente ↗';
   const answer = kuderAnswers[group.id - 1] || { most: null, least: null };
   kuderCard.innerHTML = `
     <fieldset class="kuder-group" data-group-id="${group.id}">
@@ -115,6 +113,7 @@ function renderKuder() {
       kuderAnswers[groupId - 1] = currentAnswer;
       renderKuderSelectionState(groupId, currentAnswer);
       showError(questionError, '');
+      if (currentAnswer.most !== null && currentAnswer.least !== null) window.setTimeout(advance, 220);
     });
   });
   updateProgress();
@@ -137,7 +136,6 @@ function renderHerrera() {
   setHidden(kuderSection, true);
   setHidden(herreraSection, false);
   backButton.disabled = false;
-  nextButton.textContent = herreraPage === HERRERA_COUNT - 1 ? 'Ver mi resultado ↗' : 'Siguiente ↗';
   herreraCard.innerHTML = `
     <fieldset class="herrera-question" data-question-id="${question.id}">
       <legend><span>${String(question.id).padStart(2, '0')}</span>${escapeHTML(question.text)}</legend>
@@ -148,6 +146,7 @@ function renderHerrera() {
   herreraCard.querySelectorAll('input[type="radio"]').forEach((input) => input.addEventListener('change', () => {
     herreraAnswers[Number(input.name.replace('herrera-', ''))] = Number(input.value);
     showError(questionError, '');
+    window.setTimeout(advance, 220);
   }));
   updateProgress();
 }
@@ -342,7 +341,6 @@ candidateForm.addEventListener('submit', (event) => {
   focusCurrentStep();
 });
 
-nextButton.addEventListener('click', advance);
 backButton.addEventListener('click', goBack);
 $('#restart-test').addEventListener('click', () => {
   candidate = null;

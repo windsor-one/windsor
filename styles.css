@@ -2605,3 +2605,8 @@ section { scroll-margin-top:82px; }
   .test-only-actions { bottom:8px; margin-top:25px; }
   .test-only-actions button { min-width:0; width:50%; padding:13px 8px; font-size:9px; }
 }
+
+.test-auto-hint { flex:1; align-self:center; color:#777; font-size:9px; font-weight:700; letter-spacing:.08em; text-align:center; text-transform:uppercase; }
+@media (max-width:640px) {
+  .test-auto-hint { padding:0 5px; font-size:7px; line-height:1.35; }
+}
