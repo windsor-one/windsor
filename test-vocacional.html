@@ -4,90 +4,61 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Test vocacional | Windsor</title>
-<meta name="description" content="Completa el test vocacional de Windsor para conocer tus áreas de interés." />
+<meta name="description" content="Test vocacional de Windsor." />
 <link href="assets/favicon.png" rel="icon" type="image/png" />
 <link href="https://fonts.googleapis.com" rel="preconnect" />
 <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Open+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
 <link href="styles.css" rel="stylesheet" />
 </head>
-<body class="vocational-test-page">
-<div class="preloader" aria-hidden="true">
-  <div class="preloader-logo">W</div>
-  <div class="preloader-line"><span></span></div>
-  <div class="preloader-text">WINDSOR</div>
-</div>
-<header class="header">
-  <a class="logo" href="index.html"><img alt="Windsor" class="logo-icon" src="assets/favicon.png" /><span class="logo-name">WINDSOR</span></a>
-  <nav class="desktop-nav" aria-label="Navegación principal">
-    <ul class="nav-list">
-      <li><a href="index.html">Inicio</a></li>
-      <li class="dropdown"><a href="metodologia.html">Sobre</a><ul class="submenu"><li><a href="metodologia.html">Metodología</a></li><li><a href="inspiracion.html">Inspiración</a></li></ul></li>
-      <li class="dropdown"><a href="cide.html">Servicios</a><ul class="submenu"><li><a href="cide.html">CIDE</a></li><li><a href="windsor-one.html">Windsor One</a></li><li><a href="BeQueer.html">BeQueer</a></li></ul></li>
-      <li class="dropdown"><a href="recomendados.html">Recursos</a><ul class="submenu"><li><a href="orientacion-vocacional.html">Orientación</a></li><li><a href="recomendados.html">Recomendados</a></li><li><a href="proyectos.html">Proyectos</a></li></ul></li>
-      <li class="dropdown"><a href="becas.html">Programas</a><ul class="submenu"><li><a href="becas.html">BK2</a></li><li><a href="careers.html">Careers</a></li></ul></li>
-      <li><a href="contacto.html">Contacto</a></li>
-    </ul>
-  </nav>
-  <div class="header-actions"><a class="header-button" href="contacto.html">Hablemos <span aria-hidden="true" class="arrow-icon"><svg fill="none" height="16" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="16"><line x1="7" x2="17" y1="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg></span></a></div>
-  <button aria-expanded="false" aria-label="Abrir menú" class="menu-button"><span></span><span></span></button>
-</header>
-<div class="mobile-menu"><div class="mobile-menu-inner"><div class="mobile-menu-label">NAVEGACIÓN</div><a href="index.html">Inicio</a><div class="mobile-group-title">Sobre</div><a href="metodologia.html">Metodología</a><a href="inspiracion.html">Inspiración</a><div class="mobile-group-title">Servicios</div><a href="cide.html">CIDE</a><a href="windsor-one.html">Windsor One</a><a href="BeQueer.html">BeQueer</a><div class="mobile-group-title">Recursos</div><a href="orientacion-vocacional.html">Orientación</a><a href="recomendados.html">Recomendados</a><a href="proyectos.html">Proyectos</a><div class="mobile-group-title">Programas</div><a href="becas.html">BK2</a><a href="careers.html">Careers</a><a href="contacto.html">Contacto</a></div></div>
-<main>
-  <section class="test-hero">
-    <div class="hero-noise" aria-hidden="true"></div>
-    <div class="test-hero-topline"><span>WINDSOR / ORIENTACIÓN</span><span>TEST 01 / 02</span></div>
-    <div class="test-hero-content">
-      <div class="hero-small"><span class="green-dot"></span> TEST VOCACIONAL</div>
-      <h1>Conoce tus <em>intereses.</em></h1>
-      <p>Una lectura de tus preferencias vocacionales para ayudarte a tomar decisiones con más claridad.</p>
-    </div>
-    <div class="test-hero-marquee" aria-hidden="true"><div class="marquee-track"><span>OBSERVA <b>•</b> RESPONDE <b>•</b> DESCUBRE <b>•</b> OBSERVA <b>•</b> RESPONDE <b>•</b> DESCUBRE <b>•</b></span></div></div>
+<body class="vocational-test-page test-only-page">
+<div class="preloader" aria-hidden="true"><div class="preloader-logo">W</div><div class="preloader-line"><span></span></div><div class="preloader-text">WINDSOR</div></div>
+<main id="test" class="test-only-shell">
+  <header class="test-only-topbar">
+    <a class="test-only-logo" href="index.html" aria-label="Volver a Windsor"><img src="assets/favicon.png" alt="Windsor" /><span>WINDSOR</span></a>
+    <div class="test-only-status" aria-live="polite"><span id="test-meta-status">INICIO</span><span id="test-counter">DATOS</span></div>
+  </header>
+
+  <section id="test-intro" class="test-only-panel">
+    <div class="test-only-heading"><span class="extension-label">ANTES DE COMENZAR</span><h1>Comencemos.</h1><p>Completa tus datos para identificar tu resultado. Después responderás una actividad por pantalla.</p></div>
+    <form id="candidate-form" class="test-only-form" novalidate>
+      <div class="test-only-form-label">DATOS DEL ESTUDIANTE</div>
+      <div class="form-group"><label for="candidate-name">Nombre completo <span aria-hidden="true">*</span></label><input id="candidate-name" name="name" autocomplete="name" required maxlength="120" placeholder="Escribe tu nombre" /></div>
+      <div class="test-only-form-grid">
+        <div class="form-group"><label for="candidate-age">Edad <span aria-hidden="true">*</span></label><input id="candidate-age" name="age" type="number" min="10" max="99" required placeholder="Ej. 17" /></div>
+        <div class="form-group"><label for="candidate-gender">Género <span aria-hidden="true">*</span></label><select id="candidate-gender" name="gender" required><option value="">Selecciona</option><option value="Femenino">Femenino</option><option value="Masculino">Masculino</option></select></div>
+      </div>
+      <div class="form-group"><label for="candidate-school">Centro escolar</label><input id="candidate-school" name="school" autocomplete="organization" maxlength="160" placeholder="Opcional" /></div>
+      <p class="test-privacy-note">Tus datos se utilizan únicamente para identificar tu resultado.</p>
+      <button class="test-primary-button" type="submit">Comenzar <span aria-hidden="true">↗</span></button>
+      <p class="test-form-error" id="candidate-error" role="alert" hidden></p>
+    </form>
   </section>
 
-  <section class="test-workspace section" id="test">
-    <div class="section-meta"><span>TEST KUDER + HERRERA Y MONTES</span><span id="test-meta-status">INICIO</span></div>
-    <div class="test-container">
-      <div id="test-intro" class="test-panel">
-        <div class="test-intro-copy"><span class="extension-label">ANTES DE COMENZAR</span><h2>Tu punto de<br /><em>partida.</em></h2><p>Completa tus datos para guardar tu resultado correctamente. Cada respuesta cuenta; responde pensando en lo que realmente te interesa, no en lo que otros esperan de ti.</p></div>
-        <form id="candidate-form" class="test-card" novalidate>
-          <div class="test-card-label">01 / IDENTIFICACIÓN</div>
-          <div class="form-group"><label for="candidate-name">Nombre completo <span aria-hidden="true">*</span></label><input id="candidate-name" name="name" autocomplete="name" required maxlength="120" placeholder="Escribe tu nombre" /></div>
-          <div class="test-form-row"><div class="form-group"><label for="candidate-age">Edad <span aria-hidden="true">*</span></label><input id="candidate-age" name="age" type="number" min="10" max="99" required placeholder="Ej. 17" /></div><div class="form-group"><label for="candidate-gender">Género <span aria-hidden="true">*</span></label><select id="candidate-gender" name="gender" required><option value="">Selecciona</option><option value="Femenino">Femenino</option><option value="Masculino">Masculino</option></select></div></div>
-          <div class="form-group"><label for="candidate-school">Centro escolar</label><input id="candidate-school" name="school" autocomplete="organization" maxlength="160" placeholder="Opcional" /></div>
-          <p class="test-privacy-note">Tus datos se utilizan únicamente para identificar tu resultado vocacional.</p>
-          <button class="test-primary-button" type="submit">Comenzar test <span aria-hidden="true">↗</span></button>
-          <p class="test-form-error" id="candidate-error" role="alert" hidden></p>
-        </form>
-      </div>
-
-      <div id="test-flow" class="test-panel" hidden>
-        <div class="test-flow-header"><div><span class="extension-label" id="test-phase-label">PARTE 01 / KUDER</span><h2 id="test-step-title">Elige tus preferencias.</h2></div><div class="test-counter" id="test-counter">1 / 168</div></div>
-        <div class="test-progress" aria-hidden="true"><span id="test-progress-bar"></span></div>
-        <div id="kuder-section" class="test-question-section">
-          <p class="test-instruction">En cada grupo, marca una actividad que te guste más y una que te guste menos. Deben ser dos opciones distintas.</p>
-          <div id="kuder-card" class="question-card"></div>
-        </div>
-        <div id="herrera-section" class="test-question-section" hidden>
-          <p class="test-instruction">Indica qué tanto te gustaría realizar cada actividad. Responde con sinceridad.</p>
-          <div id="herrera-card" class="question-card"></div>
-        </div>
-        <div class="test-flow-actions"><button id="test-back" class="test-secondary-button" type="button">← Anterior</button><button id="test-next" class="test-primary-button" type="button">Siguiente <span aria-hidden="true">↗</span></button></div>
-        <p class="test-form-error" id="question-error" role="alert" hidden></p>
-      </div>
-
-      <div id="test-result" class="test-panel" hidden>
-        <div class="test-result-top"><span class="extension-label">RESULTADO REGISTRADO</span><span id="result-record-label">ID —</span></div>
-        <div class="test-result-heading"><h2>Tu mapa de<br /><em>intereses.</em></h2><p id="result-summary">Hemos leído tus respuestas.</p></div>
-        <div id="result-status" class="test-save-status" role="status"></div>
-        <div class="result-feature"><div><span class="result-kicker">ÁREA PRINCIPAL</span><h3 id="result-top-area">—</h3><p id="result-top-description">—</p></div><div class="result-score" id="result-top-score">—</div></div>
-        <div class="result-grid"><div class="result-chart-card"><div class="result-kicker">PERFIL DE INTERESES</div><div id="result-bars" class="result-bars"></div></div><div class="result-next-card"><div class="result-kicker">SIGUIENTE PASO</div><h3>Explora antes de decidir.</h3><p>Este resultado es una guía para conversar sobre tus posibilidades, no una etiqueta. Úsalo como punto de partida.</p><a class="underlined-link" href="orientacion-vocacional.html">Conoce la orientación <span aria-hidden="true">↗</span></a></div></div>
-        <button id="restart-test" class="test-secondary-button" type="button">Volver al inicio</button>
-      </div>
+  <section id="test-flow" class="test-only-panel" hidden>
+    <div class="test-flow-header"><div><span class="extension-label" id="test-phase-label">KUDER</span><h1 id="test-step-title">Elige tus preferencias.</h1></div><div class="test-counter-large" id="test-counter-large">1 / 168</div></div>
+    <div class="test-progress" aria-label="Progreso del test"><span id="test-progress-bar"></span></div>
+    <div id="kuder-section" class="test-question-section">
+      <p class="test-instruction">En este grupo elige una actividad que te guste <strong>más</strong> y otra que te guste <strong>menos</strong>.</p>
+      <div id="kuder-card" class="question-card"></div>
     </div>
+    <div id="herrera-section" class="test-question-section" hidden>
+      <p class="test-instruction">¿Qué tanto te gustaría realizar esta actividad?</p>
+      <div id="herrera-card" class="question-card"></div>
+    </div>
+    <div class="test-only-actions"><button id="test-back" class="test-secondary-button" type="button">← Anterior</button><button id="test-next" class="test-primary-button" type="button">Siguiente <span aria-hidden="true">↗</span></button></div>
+    <p class="test-form-error" id="question-error" role="alert" hidden></p>
+  </section>
+
+  <section id="test-result" class="test-only-panel" hidden>
+    <div class="test-result-top"><span class="extension-label">RESULTADO REGISTRADO</span><span id="result-record-label">ID —</span></div>
+    <div class="test-result-heading"><h1>Tu resultado.</h1><p id="result-summary">Hemos leído tus respuestas.</p></div>
+    <div id="result-status" class="test-save-status" role="status"></div>
+    <div class="result-feature"><div><span class="result-kicker">ÁREA PRINCIPAL</span><h2 id="result-top-area">—</h2><p id="result-top-description">—</p></div><div class="result-score" id="result-top-score">—</div></div>
+    <div class="result-grid"><div class="result-chart-card"><div class="result-kicker">PERFIL DE INTERESES</div><div id="result-bars" class="result-bars"></div></div><div class="result-next-card"><div class="result-kicker">SIGUIENTE PASO</div><h3>Conversa sobre este resultado.</h3><p>Este resultado es una guía, no una etiqueta. Úsalo como punto de partida.</p><a class="underlined-link" href="orientacion-vocacional.html">Conoce la orientación <span aria-hidden="true">↗</span></a></div></div>
+    <button id="restart-test" class="test-secondary-button" type="button">Volver al inicio</button>
   </section>
 </main>
-<footer class="footer"><div class="footer-logo"><img alt="Windsor" src="assets/favicon.png" style="width:34px;height:34px;display:block;" /><span>WINDSOR</span></div><div class="footer-groups"><div class="footer-group"><h4>Sobre</h4><a href="metodologia.html">Metodología</a><a href="inspiracion.html">Inspiración</a></div><div class="footer-group"><h4>Servicios</h4><a href="cide.html">CIDE</a><a href="windsor-one.html">Windsor One</a><a href="BeQueer.html">BeQueer</a></div><div class="footer-group"><h4>Recursos</h4><a href="orientacion-vocacional.html">Orientación</a><a href="recomendados.html">Recomendados</a><a href="proyectos.html">Proyectos</a></div><div class="footer-group"><h4>Programas</h4><a href="becas.html">BK2</a><a href="careers.html">Careers</a></div><div class="footer-group"><h4>Contacto</h4><a href="contacto.html">Contáctanos</a></div></div><div class="footer-tagline">Precisión aplicada.</div></footer>
 <script src="script.js"></script>
 <script src="test-vocacional-data.js"></script>
 <script type="module" src="test-vocacional-app.js"></script>

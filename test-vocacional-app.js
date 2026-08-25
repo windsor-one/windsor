@@ -13,10 +13,9 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
-const KUDER_PAGE_SIZE = 6;
-const HERRERA_PAGE_SIZE = 10;
-const KUDER_PAGE_COUNT = Math.ceil(DATA.kuder.groups.length / KUDER_PAGE_SIZE);
-const HERRERA_PAGE_COUNT = Math.ceil(DATA.herrera.questions.length / HERRERA_PAGE_SIZE);
+const KUDER_COUNT = DATA.kuder.groups.length;
+const HERRERA_COUNT = DATA.herrera.questions.length;
+const TOTAL_COUNT = KUDER_COUNT + HERRERA_COUNT;
 
 const $ = (selector) => document.querySelector(selector);
 const intro = $('#test-intro');
@@ -28,6 +27,7 @@ const questionError = $('#question-error');
 const phaseLabel = $('#test-phase-label');
 const stepTitle = $('#test-step-title');
 const counter = $('#test-counter');
+const counterLarge = $('#test-counter-large');
 const progressBar = $('#test-progress-bar');
 const kuderSection = $('#kuder-section');
 const herreraSection = $('#herrera-section');
@@ -43,7 +43,6 @@ let kuderPage = 0;
 let herreraPage = 0;
 let kuderAnswers = [];
 let herreraAnswers = {};
-let lastResult = null;
 
 function setHidden(element, hidden) {
   if (element) element.hidden = hidden;
@@ -64,52 +63,57 @@ function clearErrors() {
   showError(questionError, '');
 }
 
+function focusCurrentStep() {
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+  window.setTimeout(() => stepTitle?.focus?.(), 100);
+}
+
 function updateProgress() {
-  const completed = stage === 'kuder'
-    ? kuderPage * KUDER_PAGE_SIZE
-    : DATA.kuder.groups.length + herreraPage * HERRERA_PAGE_SIZE;
-  const percentage = Math.max(2, Math.min(100, (completed / (DATA.kuder.groups.length + DATA.herrera.questions.length)) * 100));
+  const current = stage === 'kuder' ? kuderPage : KUDER_COUNT + herreraPage;
+  const percentage = Math.max(1, Math.min(100, ((current + 0.5) / TOTAL_COUNT) * 100));
   progressBar.style.width = `${percentage}%`;
-  metaStatus.textContent = stage === 'kuder' ? 'PARTE 01 / 02' : 'PARTE 02 / 02';
+  metaStatus.textContent = stage === 'kuder' ? 'KUDER' : 'HERRERA';
+  counter.textContent = stage === 'kuder' ? `GRUPO ${kuderPage + 1} / ${KUDER_COUNT}` : `PREGUNTA ${herreraPage + 1} / ${HERRERA_COUNT}`;
 }
 
 function renderKuder() {
-  const start = kuderPage * KUDER_PAGE_SIZE;
-  const groups = DATA.kuder.groups.slice(start, start + KUDER_PAGE_SIZE);
+  const group = DATA.kuder.groups[kuderPage];
+  if (!group) return;
   phaseLabel.textContent = 'PARTE 01 / KUDER';
   stepTitle.textContent = 'Elige tus preferencias.';
-  counter.textContent = `Grupos ${start + 1}–${start + groups.length} / ${DATA.kuder.groups.length}`;
+  stepTitle.tabIndex = -1;
+  counterLarge.textContent = `${kuderPage + 1} / ${KUDER_COUNT}`;
   setHidden(kuderSection, false);
   setHidden(herreraSection, true);
   backButton.disabled = kuderPage === 0;
-  nextButton.textContent = kuderPage === KUDER_PAGE_COUNT - 1 ? 'Continuar a Herrera ↗' : 'Siguiente ↗';
-  kuderCard.innerHTML = groups.map((group) => `
+  nextButton.textContent = kuderPage === KUDER_COUNT - 1 ? 'Continuar a Herrera ↗' : 'Siguiente ↗';
+  const answer = kuderAnswers[group.id - 1] || { most: null, least: null };
+  kuderCard.innerHTML = `
     <fieldset class="kuder-group" data-group-id="${group.id}">
-      <legend><span>GRUPO ${String(group.id).padStart(3, '0')}</span> Elige una actividad que te guste más y otra que te guste menos.</legend>
-      <div class="kuder-table-head"><span>Actividad</span><span>Más</span><span>Menos</span></div>
+      <legend><span>GRUPO ${String(group.id).padStart(3, '0')}</span>Selecciona una actividad en cada columna.</legend>
+      <div class="kuder-table-head"><span>Actividad</span><span>ME GUSTA MÁS</span><span>ME GUSTA MENOS</span></div>
       ${group.items.map((item, itemIndex) => `
         <div class="kuder-option-row">
           <span class="kuder-option-text">${escapeHTML(item.text)}</span>
-          <label class="choice-dot" aria-label="Me gusta más: ${escapeHTML(item.text)}"><input type="radio" name="more-${group.id}" value="${itemIndex}" ${kuderAnswers[group.id - 1]?.most === itemIndex ? 'checked' : ''}><span aria-hidden="true"></span></label>
-          <label class="choice-dot" aria-label="Me gusta menos: ${escapeHTML(item.text)}"><input type="radio" name="less-${group.id}" value="${itemIndex}" ${kuderAnswers[group.id - 1]?.least === itemIndex ? 'checked' : ''}><span aria-hidden="true"></span></label>
+          <label class="choice-dot" aria-label="Me gusta más: ${escapeHTML(item.text)}"><input type="radio" name="more-${group.id}" value="${itemIndex}" ${answer.most === itemIndex ? 'checked' : ''}><span aria-hidden="true"></span></label>
+          <label class="choice-dot" aria-label="Me gusta menos: ${escapeHTML(item.text)}"><input type="radio" name="less-${group.id}" value="${itemIndex}" ${answer.least === itemIndex ? 'checked' : ''}><span aria-hidden="true"></span></label>
         </div>
       `).join('')}
-    </fieldset>
-  `).join('');
+    </fieldset>`;
   kuderCard.querySelectorAll('input[type="radio"]').forEach((input) => {
     input.addEventListener('change', () => {
       const groupId = Number(input.closest('[data-group-id]').dataset.groupId);
       const index = Number(input.value);
-      const answer = kuderAnswers[groupId - 1] || { most: null, least: null };
+      const currentAnswer = kuderAnswers[groupId - 1] || { most: null, least: null };
       if (input.name.startsWith('more-')) {
-        answer.most = index;
-        if (answer.least === index) answer.least = null;
+        currentAnswer.most = index;
+        if (currentAnswer.least === index) currentAnswer.least = null;
       } else {
-        answer.least = index;
-        if (answer.most === index) answer.most = null;
+        currentAnswer.least = index;
+        if (currentAnswer.most === index) currentAnswer.most = null;
       }
-      kuderAnswers[groupId - 1] = answer;
-      renderKuderSelectionState(groupId, answer);
+      kuderAnswers[groupId - 1] = currentAnswer;
+      renderKuderSelectionState(groupId, currentAnswer);
       showError(questionError, '');
     });
   });
@@ -124,23 +128,23 @@ function renderKuderSelectionState(groupId, answer) {
 }
 
 function renderHerrera() {
-  const start = herreraPage * HERRERA_PAGE_SIZE;
-  const questions = DATA.herrera.questions.slice(start, start + HERRERA_PAGE_SIZE);
+  const question = DATA.herrera.questions[herreraPage];
+  if (!question) return;
   phaseLabel.textContent = 'PARTE 02 / HERRERA Y MONTES';
   stepTitle.textContent = 'Qué tanto te gustaría.';
-  counter.textContent = `Preguntas ${start + 1}–${start + questions.length} / ${DATA.herrera.questions.length}`;
+  stepTitle.tabIndex = -1;
+  counterLarge.textContent = `${herreraPage + 1} / ${HERRERA_COUNT}`;
   setHidden(kuderSection, true);
   setHidden(herreraSection, false);
   backButton.disabled = false;
-  nextButton.textContent = herreraPage === HERRERA_PAGE_COUNT - 1 ? 'Ver mi resultado ↗' : 'Siguiente ↗';
-  herreraCard.innerHTML = questions.map((question) => `
+  nextButton.textContent = herreraPage === HERRERA_COUNT - 1 ? 'Ver mi resultado ↗' : 'Siguiente ↗';
+  herreraCard.innerHTML = `
     <fieldset class="herrera-question" data-question-id="${question.id}">
       <legend><span>${String(question.id).padStart(2, '0')}</span>${escapeHTML(question.text)}</legend>
       <div class="scale-options">
         ${DATA.herrera.responseScale.map((option) => `<label><input type="radio" name="herrera-${question.id}" value="${option.value}" ${herreraAnswers[question.id] === option.value ? 'checked' : ''}><span>${escapeHTML(option.label)}</span></label>`).join('')}
       </div>
-    </fieldset>
-  `).join('');
+    </fieldset>`;
   herreraCard.querySelectorAll('input[type="radio"]').forEach((input) => input.addEventListener('change', () => {
     herreraAnswers[Number(input.name.replace('herrera-', ''))] = Number(input.value);
     showError(questionError, '');
@@ -148,28 +152,20 @@ function renderHerrera() {
   updateProgress();
 }
 
-function validateKuderPage() {
-  const start = kuderPage * KUDER_PAGE_SIZE;
-  const groups = DATA.kuder.groups.slice(start, start + KUDER_PAGE_SIZE);
-  const incomplete = groups.find((group) => {
-    const answer = kuderAnswers[group.id - 1];
-    return !answer || answer.most === null || answer.least === null;
-  });
-  if (incomplete) {
-    showError(questionError, `Completa el grupo ${incomplete.id}: selecciona una opción en “Más” y otra en “Menos”.`);
-    kuderCard.querySelector(`[data-group-id="${incomplete.id}"]`)?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+function validateKuder() {
+  const group = DATA.kuder.groups[kuderPage];
+  const answer = kuderAnswers[group.id - 1];
+  if (!answer || answer.most === null || answer.least === null) {
+    showError(questionError, 'Selecciona una actividad que te guste más y otra que te guste menos.');
     return false;
   }
   return true;
 }
 
-function validateHerreraPage() {
-  const start = herreraPage * HERRERA_PAGE_SIZE;
-  const questions = DATA.herrera.questions.slice(start, start + HERRERA_PAGE_SIZE);
-  const incomplete = questions.find((question) => herreraAnswers[question.id] === undefined);
-  if (incomplete) {
-    showError(questionError, `Responde la pregunta ${incomplete.id} para continuar.`);
-    herreraCard.querySelector(`[data-question-id="${incomplete.id}"]`)?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+function validateHerrera() {
+  const question = DATA.herrera.questions[herreraPage];
+  if (herreraAnswers[question.id] === undefined) {
+    showError(questionError, 'Selecciona una respuesta para continuar.');
     return false;
   }
   return true;
@@ -178,40 +174,47 @@ function validateHerreraPage() {
 function advance() {
   clearErrors();
   if (stage === 'kuder') {
-    if (!validateKuderPage()) return;
-    if (kuderPage < KUDER_PAGE_COUNT - 1) {
+    if (!validateKuder()) return;
+    if (kuderPage < KUDER_COUNT - 1) {
       kuderPage += 1;
       renderKuder();
+      focusCurrentStep();
     } else {
       stage = 'herrera';
       herreraPage = 0;
       renderHerrera();
-      window.scrollTo({ top: document.querySelector('#test').offsetTop - 80, behavior: 'smooth' });
+      focusCurrentStep();
     }
+    return;
+  }
+  if (!validateHerrera()) return;
+  if (herreraPage < HERRERA_COUNT - 1) {
+    herreraPage += 1;
+    renderHerrera();
+    focusCurrentStep();
   } else {
-    if (!validateHerreraPage()) return;
-    if (herreraPage < HERRERA_PAGE_COUNT - 1) {
-      herreraPage += 1;
-      renderHerrera();
-    } else {
-      finishTest();
-    }
+    finishTest();
   }
 }
 
 function goBack() {
   clearErrors();
   if (stage === 'kuder') {
-    if (kuderPage > 0) { kuderPage -= 1; renderKuder(); }
+    if (kuderPage > 0) {
+      kuderPage -= 1;
+      renderKuder();
+      focusCurrentStep();
+    }
   } else if (herreraPage > 0) {
     herreraPage -= 1;
     renderHerrera();
+    focusCurrentStep();
   } else {
     stage = 'kuder';
-    kuderPage = KUDER_PAGE_COUNT - 1;
+    kuderPage = KUDER_COUNT - 1;
     renderKuder();
+    focusCurrentStep();
   }
-  window.scrollTo({ top: document.querySelector('#test').offsetTop - 80, behavior: 'smooth' });
 }
 
 function sumCellRefs(cellRefs) {
@@ -263,19 +266,18 @@ function calculateResult() {
 }
 
 function showResult(resultData, recordId = '') {
-  lastResult = resultData;
   setHidden(intro, true);
   setHidden(flow, true);
   setHidden(result, false);
   const topArea = resultData.sortedAreas[0];
   $('#result-record-label').textContent = recordId ? `ID ${recordId.slice(0, 8).toUpperCase()}` : 'ID PENDIENTE';
-  $('#result-summary').textContent = resultData.validity === 'Válida' ? 'Tu perfil está listo. Estas son tus áreas de mayor afinidad.' : `Tu resultado se calculó, pero la escala de validez aparece como ${resultData.validity.toLowerCase()}.`; 
+  $('#result-summary').textContent = resultData.validity === 'Válida' ? 'Tu perfil está listo. Estas son tus áreas de mayor afinidad.' : `Tu resultado se calculó, pero la escala de validez aparece como ${resultData.validity.toLowerCase()}.`;
   $('#result-top-area').textContent = topArea;
   $('#result-top-score').textContent = `${resultData.average[topArea]} / 99`;
   $('#result-top-description').textContent = `Tu mayor afinidad aparece en ${topArea.toLowerCase()}, combinando tus respuestas de Kuder y Herrera y Montes.`;
   $('#result-bars').innerHTML = resultData.sortedAreas.map((area) => `<div class="result-bar-row"><div><span>${escapeHTML(area)}</span><b>${resultData.average[area]}</b></div><div class="result-bar-track"><span style="width:${Math.min(100, resultData.average[area])}%"></span></div><small>Kuder ${resultData.kuderEquivalent[area]} · Herrera ${resultData.herreraEquivalent[area]}</small></div>`).join('');
   metaStatus.textContent = 'COMPLETADO';
-  window.scrollTo({ top: document.querySelector('#test').offsetTop - 80, behavior: 'smooth' });
+  counter.textContent = 'RESULTADO';
 }
 
 async function persistResult(resultData) {
@@ -328,7 +330,7 @@ candidateForm.addEventListener('submit', (event) => {
     gender: $('#candidate-gender').value,
     school: $('#candidate-school').value.trim()
   };
-  kuderAnswers = Array.from({ length: DATA.kuder.groups.length }, () => ({ most: null, least: null }));
+  kuderAnswers = Array.from({ length: KUDER_COUNT }, () => ({ most: null, least: null }));
   herreraAnswers = {};
   stage = 'kuder';
   kuderPage = 0;
@@ -337,20 +339,22 @@ candidateForm.addEventListener('submit', (event) => {
   setHidden(result, true);
   setHidden(flow, false);
   renderKuder();
-  window.scrollTo({ top: document.querySelector('#test').offsetTop - 80, behavior: 'smooth' });
+  focusCurrentStep();
 });
 
 nextButton.addEventListener('click', advance);
 backButton.addEventListener('click', goBack);
 $('#restart-test').addEventListener('click', () => {
   candidate = null;
-  lastResult = null;
   setHidden(result, true);
   setHidden(flow, true);
   setHidden(intro, false);
   candidateForm.reset();
   metaStatus.textContent = 'INICIO';
-  window.scrollTo({ top: document.querySelector('#test').offsetTop - 80, behavior: 'smooth' });
+  counter.textContent = 'DATOS';
+  window.scrollTo({ top: 0, behavior: 'smooth' });
 });
 
 renderKuder();
+metaStatus.textContent = 'INICIO';
+counter.textContent = 'DATOS';
