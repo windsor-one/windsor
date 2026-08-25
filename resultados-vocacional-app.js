@@ -1,6 +1,6 @@
 import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js';
 import { getAuth, GoogleAuthProvider, signInWithRedirect, onAuthStateChanged, signOut } from 'https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js';
-import { getFirestore, collection, getDocs, query, orderBy } from 'https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js';
+import { getFirestore, collection, getDocs } from 'https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js';
 
 const firebaseConfig = {
   apiKey: 'AIzaSyCJnhzk4nRN1BS2GWpkMIDvu4nyKmfhfHo',
@@ -64,8 +64,9 @@ async function loadRecords() {
   statusBox.className = 'test-save-status is-loading';
   statusBox.textContent = 'Actualizando registros…';
   try {
-    const snapshot = await getDocs(query(collection(db, 'testResults'), orderBy('createdAt', 'desc')));
-    records = snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
+    const snapshot = await getDocs(collection(db, 'testResults'));
+    records = snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }))
+      .sort((a, b) => recordDate(b).getTime() - recordDate(a).getTime());
     renderRecords();
     statusBox.className = 'test-save-status is-success';
     statusBox.textContent = 'Registros actualizados. Cada fila corresponde a una sesión independiente.';
