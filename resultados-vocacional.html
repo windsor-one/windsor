@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Resultados vocacionales | Windsor</title>
+<meta name="description" content="Panel privado de resultados del test vocacional Windsor." />
+<link href="assets/favicon.png" rel="icon" type="image/png" />
+<link href="https://fonts.googleapis.com" rel="preconnect" />
+<link href="https://fonts.gstatic.com" rel="preconnect" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Open+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<link href="styles.css" rel="stylesheet" />
+</head>
+<body class="results-page">
+<div class="preloader" aria-hidden="true"><div class="preloader-logo">W</div><div class="preloader-line"><span></span></div><div class="preloader-text">WINDSOR</div></div>
+<header class="header"><a class="logo" href="index.html"><img alt="Windsor" class="logo-icon" src="assets/favicon.png" /><span class="logo-name">WINDSOR</span></a><nav class="desktop-nav" aria-label="Navegación principal"><ul class="nav-list"><li><a href="index.html">Inicio</a></li><li class="dropdown"><a href="metodologia.html">Sobre</a><ul class="submenu"><li><a href="metodologia.html">Metodología</a></li><li><a href="inspiracion.html">Inspiración</a></li></ul></li><li class="dropdown"><a href="recomendados.html">Recursos</a><ul class="submenu"><li><a href="orientacion-vocacional.html">Orientación</a></li><li><a href="proyectos.html">Proyectos</a></li></ul></li><li><a href="contacto.html">Contacto</a></li></ul></nav><div class="header-actions"><a class="header-button" href="test-vocacional.html">Ver test <span aria-hidden="true">↗</span></a></div><button aria-expanded="false" aria-label="Abrir menú" class="menu-button"><span></span><span></span></button></header>
+<div class="mobile-menu"><div class="mobile-menu-inner"><div class="mobile-menu-label">NAVEGACIÓN</div><a href="index.html">Inicio</a><a href="orientacion-vocacional.html">Orientación vocacional</a><a href="test-vocacional.html">Test vocacional</a><a href="contacto.html">Contacto</a></div></div>
+<main>
+<section class="results-hero"><div class="hero-noise" aria-hidden="true"></div><div class="test-hero-topline"><span>WINDSOR / ADMINISTRACIÓN</span><span>RESULTADOS</span></div><div class="test-hero-content"><div class="hero-small"><span class="green-dot"></span> PANEL PRIVADO</div><h1>Resultados<br /><em>registrados.</em></h1><p>Consulta los resultados de tus estudiantes desde un solo lugar. Este panel requiere tu cuenta autorizada.</p></div></section>
+<section class="results-workspace section"><div class="section-meta"><span>TEST VOCACIONAL</span><span id="admin-session-status">VERIFICANDO ACCESO</span></div><div class="results-container">
+  <div id="admin-login" class="admin-login-card"><span class="extension-label">ACCESO RESTRINGIDO</span><h2>Solo para<br /><em>administración.</em></h2><p>Inicia sesión con la cuenta autorizada para consultar los registros. Los estudiantes no pueden ver esta información.</p><button id="admin-login-button" class="test-primary-button" type="button">Iniciar con Google <span aria-hidden="true">↗</span></button><p id="admin-error" class="test-form-error" role="alert" hidden></p></div>
+  <div id="admin-dashboard" hidden><div class="dashboard-toolbar"><div><span class="extension-label">REGISTROS RECIBIDOS</span><h2 id="results-count">0 resultados</h2></div><div class="dashboard-actions"><button id="refresh-results" class="test-secondary-button" type="button">Actualizar</button><button id="export-results" class="test-primary-button" type="button">Exportar CSV ↗</button><button id="admin-logout" class="test-secondary-button" type="button">Cerrar sesión</button></div></div><div id="results-status" class="test-save-status" role="status">Cargando…</div><div class="results-table-wrap"><table class="results-table"><thead><tr><th>Estudiante</th><th>Fecha</th><th>Perfil principal</th><th>Validez</th><th>Puntaje</th><th>Detalle</th></tr></thead><tbody id="results-body"></tbody></table></div><div id="results-empty" class="results-empty" hidden><h3>Aún no hay resultados.</h3><p>Cuando una persona complete el test, su registro aparecerá aquí automáticamente.</p></div></div>
+</div></section>
+</main>
+<footer class="footer"><div class="footer-logo"><img alt="Windsor" src="assets/favicon.png" style="width:34px;height:34px;display:block;" /><span>WINDSOR</span></div><div class="footer-groups"><div class="footer-group"><h4>Recursos</h4><a href="orientacion-vocacional.html">Orientación</a><a href="test-vocacional.html">Test vocacional</a></div><div class="footer-group"><h4>Contacto</h4><a href="contacto.html">Contáctanos</a></div></div><div class="footer-tagline">Precisión aplicada.</div></footer>
+<script src="script.js"></script>
+<script type="module" src="resultados-vocacional-app.js"></script>
+</body>
+</html>
